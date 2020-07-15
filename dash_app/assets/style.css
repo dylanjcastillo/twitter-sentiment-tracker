@@ -1,0 +1,276 @@
+body {
+  font-family: "Lato", sans-serif;
+  background-color: hsl(210, 36%, 96%);
+}
+
+.jumbotron {
+  height: 226px;
+  background-color: hsl(209, 34%, 30%);
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 992px) {
+  .jumbotron {
+    height: 256px;
+  }
+}
+
+.title-jumbotron {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.text-jumbotron {
+  color: #d9e2ec;
+  font-size: 20px;
+  max-width: 512px;
+  margin: 0 auto;
+}
+
+.top-card {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.18);
+  padding: 16px 16px;
+  max-width: 75%;
+}
+
+@media (min-width: 992px) {
+  .top-card {
+    margin-top: -100px;
+    padding: 24px 36px;
+    max-width: 650px;
+  }
+}
+
+@media (min-width: 992px) {
+  .responses-flex-chart {
+    width: 288px;
+    height: 256px;
+  }
+}
+
+.responses-flex-chart {
+  width: 416px;
+  height: 384px;
+}
+
+.total-responses {
+  color: #102a43;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  margin-bottom: 0;
+}
+
+.total-score {
+  color: #102a43;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  margin-bottom: 0;
+}
+
+.total-dropdowns {
+  margin-top: 24px;
+  width: 192px;
+}
+
+.exclude-rt-checkbox {
+  color: #102a43;
+  width: 160px;
+  height: 36px;
+}
+
+.Select-value {
+  background-color: #d9e2ec;
+  color: #334e68;
+}
+
+.total-subtitle {
+  color: #bcccdc;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin-top: -16px;
+  margin-bottom: 0;
+}
+
+
+.title-summary {
+  font-size: 24px;
+  color: hsl(209, 34%, 30%);
+  font-weight: 500;
+}
+
+.card-chart {
+  padding: 24px 24px 24px 24px;
+  margin-bottom: 64px;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.18);
+}
+
+.card-chart-top {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 992px) {
+  #cards-container {
+    max-width: 960px;
+  }
+}
+
+#summary-cards {
+  max-width: 480px;
+}
+
+.card-overview {
+  width: 14rem;
+  height: 18rem;
+  margin: 0.415rem;
+  border: 0;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.18);
+}
+
+.tweet-card {
+  width: 24rem;
+  height: 12rem;
+  margin-bottom: 0.825rem;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.18);
+  overflow: hidden;
+  padding: 20px 16px 16px 16px;
+}
+
+.tweet-top {
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  right: 64px;
+  left: 16px;
+}
+
+.tweet-card:after {
+  content: " ";
+  display: block;
+  background-color: #fff;
+  height: 36px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.tweet-text {
+  font-size: 14px;
+  color: hsl(209, 28%, 39%);
+  padding-top: 45px;
+}
+
+.tweet-text-img {
+  position: absolute;
+  top: 6px;
+  right: 32px;
+  font-size: 12px;
+  color: hsl(211, 27%, 70%);
+}
+
+.tweet-time {
+  position: absolute;
+  top: 4px;
+  font-size: 14px;
+  color: hsl(209, 23%, 60%);
+  margin-bottom: 0;
+}
+
+.tweet-score {
+  font-size: 10px;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  z-index: 1000;
+}
+
+.tweet-img {
+  margin-left: 6px;
+  border-radius: 5rem;
+  max-width: 2rem;
+  margin-top: -1rem;
+}
+
+.card-img {
+  border: 4px solid hsl(0, 0%, 100%);
+  border-radius: 5rem;
+  max-width: 7.5rem;
+  margin-bottom: 0.0375rem;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.card-party {
+  color: #9fb3c8;
+  margin-bottom: 0.625rem;
+}
+
+.card-text {
+  color: #102a43;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  margin-bottom: 0;
+}
+
+.card-kpi {
+  color: #102a43;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  margin-bottom: 0;
+}
+
+.card-subtitle {
+  color: #bcccdc;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  margin-top: -12px;
+  margin-bottom: 0;
+}
+
+.cards {
+  margin-bottom: 1.5rem;
+}
+
+.navbar-mod {
+  background-color: hsl(209, 34%, 30%) !important;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show > .nav-link {
+  color: hsl(210, 36%, 96%);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: hsl(210, 31%, 80%);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: hsl(212, 33%, 89%);
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='hsl(210, 31%, 80%)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-brand {
+  letter-spacing: 0.25rem;
+  font-weight: bold;
+  font-size: 24px;
+}
