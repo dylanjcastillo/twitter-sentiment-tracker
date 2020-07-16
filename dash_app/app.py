@@ -17,6 +17,7 @@ UPDATE_INTERVAL = 30
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DATABASE_PATH = ROOT_DIR / "database" / "tweets.db"
 TARGETS_DF = pd.read_csv(ROOT_DIR / "accounts.csv")
+LOGS_PATH = Path(__file__).parent / "logs" / "dash_app.log"
 
 external_stylesheets = [
     dbc.themes.BOOTSTRAP,
@@ -227,14 +228,16 @@ def update_cards(n, time_range, exclude_rt):
             responses = df.loc[df.target == target.id, "responses"].item()
             sentiment_score = df.loc[df.target == target.id, "sentiment"].item()
             cards.append(card(target, responses, sentiment_score))
-        except Exception:
+        except Exception as e:
+            logging.debug(e)
             pass
     total_responses_num = df.responses.sum()
     total_responses = human_format(total_responses_num)
     total_approval_num = 0
     try:
         total_approval_num = np.nanmean(df.sentiment)
-    except Exception:
+    except Exception as e:
+        logging.debug(e)
         pass
     total_approval = f"{total_approval_num:.0f}%"
     approval_style = {"color": get_color_from_score(total_approval_num)}
@@ -242,7 +245,5 @@ def update_cards(n, time_range, exclude_rt):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        filename="./logs/dash_app.log", filemode="w", level=logging.DEBUG
-    )
+    logging.basicConfig(filename=LOGS_PATH, filemode="w", level=logging.DEBUG)
     app.run_server(host="0.0.0.0", debug=True, port=8050)
