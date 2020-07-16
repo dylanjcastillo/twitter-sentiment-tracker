@@ -243,34 +243,3 @@ body {
 .cards {
   margin-bottom: 1.5rem;
 }
-
-.navbar-mod {
-  background-color: hsl(209, 34%, 30%) !important;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.navbar-dark .navbar-nav .active > .nav-link,
-.navbar-dark .navbar-nav .nav-link.active,
-.navbar-dark .navbar-nav .nav-link.show,
-.navbar-dark .navbar-nav .show > .nav-link {
-  color: hsl(210, 36%, 96%);
-}
-
-.navbar-dark .navbar-nav .nav-link {
-  color: hsl(210, 31%, 80%);
-}
-
-.navbar-dark .navbar-nav .nav-link:hover {
-  color: hsl(212, 33%, 89%);
-}
-
-.navbar-dark .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='hsl(210, 31%, 80%)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.navbar-brand {
-  letter-spacing: 0.25rem;
-  font-weight: bold;
-  font-size: 24px;
-}
