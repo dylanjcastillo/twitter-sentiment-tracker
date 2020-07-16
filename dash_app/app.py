@@ -8,14 +8,15 @@ import numpy as np
 import pandas as pd
 from dash.dependencies import Input, Output
 from components import card, tweet
-from config import UPDATE_INTERVAL, TARGETS
 from utils import human_format, get_color_from_score
 from pathlib import Path
 import logging
 
-ROOT_DIR = Path(__file__).parent.parent
-DB_DIR = ROOT_DIR / "database"
-TWEETS_DB = DB_DIR / "tweets.db"
+
+UPDATE_INTERVAL = 30
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DATABASE_PATH = ROOT_DIR / "database" / "tweets.db"
+TARGETS_DF = pd.read_csv(ROOT_DIR / "accounts.csv")
 
 external_stylesheets = [
     dbc.themes.BOOTSTRAP,
@@ -117,7 +118,11 @@ app.layout = html.Div(
                                     "Summary",
                                     className="title-summary text-center text-sm-left mt-1",
                                 ),
-                                html.Div(id="summary-cards"),
+                                html.Div(
+                                    id="summary-cards",
+                                    className="d-flex flex-wrap flex-column flex-sm-row "
+                                    "justify-content-sm-center justify-content-md-end",
+                                ),
                             ]
                         ),
                         html.Div(
@@ -155,7 +160,7 @@ app.layout = html.Div(
     ],
 )
 def update_tweets(n, time_range, exclude_rt):
-    conn = sqlite3.connect(TWEETS_DB)
+    conn = sqlite3.connect(DATABASE_PATH)
     time_range = 15 if time_range not in (15, 60, 1440) else time_range * 100
     filter_rt = True if exclude_rt == [1] else False
     query = f"""
@@ -172,16 +177,11 @@ def update_tweets(n, time_range, exclude_rt):
     limit 5;
     """
     df = pd.read_sql_query(query, conn)
-    df["tweet_timestamp"] = (
-        pd.to_datetime(df.tweet_timestamp.values)
-        .tz_localize("UTC")
-        .tz_convert("Europe/Madrid")
-    )
-
+    df["tweet_timestamp"] = pd.to_datetime(df.tweet_timestamp.values)
     tweets = []
     for _, row in df.iterrows():
         time = row["tweet_timestamp"].strftime("%T - %b %-d, %Y")
-        img = TARGETS.get_target(row["target"]).image
+        img = TARGETS_DF.loc[TARGETS_DF.id == row["target"]]["image"].item()
         if row["score"] < 0.5:
             color = "hsl(360, 67%, 44%)"
             sentiment = "NEGATIVE"
@@ -206,7 +206,7 @@ def update_tweets(n, time_range, exclude_rt):
     ],
 )
 def update_cards(n, time_range, exclude_rt):
-    conn = sqlite3.connect(TWEETS_DB)
+    conn = sqlite3.connect(DATABASE_PATH)
     time_range = 15 if time_range not in (15, 60, 1440) else time_range * 100
     filter_rt = True if exclude_rt == [1] else False
     query = f"""
@@ -221,19 +221,14 @@ def update_cards(n, time_range, exclude_rt):
         group by target;
     """
     df = pd.read_sql_query(query, conn)
-    rows = []
-    for target in TARGETS.get_targets():
+    cards = []
+    for target in TARGETS_DF.itertuples():
         try:
             responses = df.loc[df.target == target.id, "responses"].item()
             sentiment_score = df.loc[df.target == target.id, "sentiment"].item()
-            rows.append(card(target, responses, sentiment_score))
+            cards.append(card(target, responses, sentiment_score))
         except Exception:
             pass
-    cards = html.Div(
-        rows,
-        className="d-flex flex-wrap flex-column flex-sm-row "
-        "justify-content-sm-center justify-content-md-end",
-    )
     total_responses_num = df.responses.sum()
     total_responses = human_format(total_responses_num)
     total_approval_num = 0
