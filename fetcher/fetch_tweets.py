@@ -52,7 +52,7 @@ def process_text(column):
     column = column.replace(EMOJI_TO_ES, regex=True)
     column = column.str.replace("^RT", "")
     column = column.str.replace(r"(?<=@)\w+", "")
-    column = column.str.replace(r"[.,\/#@!¡\?¿$%\^&\*;:{}=\-_`~()]", " ")
+    column = column.str.replace(r"[.,\/#@!¡\?¿$%\^&\*;:{}=\-_`~()”“\"]", " ")
     column = column.str.replace(r"\s+", " ")
     column = column.str.lower()
     column = column.str.strip()
@@ -151,7 +151,9 @@ def extract_tweets_data(response, target, target_account):
         ],
     )
     df_output.insert(
-        loc=4, column="PROCESSED_TEXT", value=process_text(df_output["FULL_TEXT"])
+        loc=4,
+        column="PROCESSED_TEXT",
+        value=process_text(df_output["FULL_TEXT"]),
     )
     return df_output
 
