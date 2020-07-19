@@ -15,8 +15,9 @@ import logging
 
 UPDATE_INTERVAL = 30
 ROOT_DIR = Path(__file__).resolve().parents[1]
-DATABASE_PATH = ROOT_DIR / "database" / "tweets.db"
-TARGETS_DF = pd.read_csv(ROOT_DIR / "accounts.csv")
+DATA_DIR = ROOT_DIR / "data"
+DATABASE_PATH = DATA_DIR / "tweets.db"
+TARGETS_DF = pd.read_csv(DATA_DIR / "accounts.csv")
 LOGS_PATH = Path(__file__).parent / "logs" / "dash_app.log"
 
 external_stylesheets = [
@@ -214,7 +215,7 @@ def update_cards(n, time_range, exclude_rt):
     select
         target as target,
         count(*) as responses,
-        avg(sentiment) * 100 as sentiment
+        avg(case when sentiment < 0.5 then 0 else 1 end) * 100 as sentiment
     from tweets
     where
         datetime(tweet_timestamp) >= datetime('now', '-{time_range} minutes')
