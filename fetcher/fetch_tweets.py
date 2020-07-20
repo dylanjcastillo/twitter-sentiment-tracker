@@ -31,6 +31,7 @@ EMOJI_TO_ES = (
 CONSUMER_KEY = os.getenv("TWITTER_KEY")
 CONSUMER_SECRET = os.getenv("TWITTER_SECRET")
 SENTIMENT_APP_HOST = os.getenv("SENTIMENT_APP_HOST")
+FETCH_INTERVAL = int(os.getenv("FETCH_INTERVAL"))
 LANGUAGE = "es"
 AUTH = tweepy.AppAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 
@@ -151,9 +152,7 @@ def extract_tweets_data(response, target, target_account):
         ],
     )
     df_output.insert(
-        loc=4,
-        column="PROCESSED_TEXT",
-        value=process_text(df_output["FULL_TEXT"]),
+        loc=4, column="PROCESSED_TEXT", value=process_text(df_output["FULL_TEXT"]),
     )
     return df_output
 
@@ -260,7 +259,7 @@ def main(target, target_account):
     logging.info(f"{target} Getting last TWEET_ID from the database")
     conn = sqlite3.connect(TWEETS_DB)
     cur = conn.cursor()
-    cur.execute("SELECT MAX(TWEET_ID) FROM TWEETS WHERE TARGET=?;", target)
+    cur.execute("SELECT MAX(TWEET_ID) FROM TWEETS WHERE TARGET=?;", (target,))
     last_id = cur.fetchone()[0]
 
     logging.info(f"{target} Getting most recent tweets from API")
@@ -313,15 +312,15 @@ if __name__ == "__main__":
     while True:
         diff = (end_time - start_time).total_seconds()
         logging.info(f"Execution took {diff} seconds")
-        if diff >= 30:
+        if diff >= FETCH_INTERVAL:
             logging.info("Will start execution now")
             start_time = datetime.datetime.now()
             for target in TARGETS_DF.itertuples():
                 main(target.id, target.account)
         else:
-            logging.info(f"Will start execution in {30 - diff} seconds")
-            time.sleep(30 - diff)
+            logging.info(f"Will start execution in {FETCH_INTERVAL - diff} seconds")
+            time.sleep(FETCH_INTERVAL - diff)
             start_time = datetime.datetime.now()
-            for target, account in TARGETS_DF.itertuples():
+            for target in TARGETS_DF.itertuples():
                 main(target.id, target.account)
         end_time = datetime.datetime.now()
