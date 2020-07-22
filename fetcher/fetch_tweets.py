@@ -24,7 +24,7 @@ DATA_DIR = ROOT_DIR / "data"
 TWEETS_DB = DATA_DIR / "tweets.db"
 LOGS_PATH = Path(__file__).parent / "logs" / "fetcher.log"
 TARGETS_DF = pd.read_csv(DATA_DIR / "accounts.csv")
-EMOJI_TO_ES = (
+EMOJI_TO_ORIG_LANG = (
     pd.read_csv(DATA_DIR / "emojis_es.csv").set_index("name")["name_es"].to_dict()
 )
 
@@ -50,7 +50,7 @@ def process_text(column):
         "",
     )
     column = column.map(emoji.demojize)
-    column = column.replace(EMOJI_TO_ES, regex=True)
+    column = column.replace(EMOJI_TO_ORIG_LANG, regex=True)
     column = column.str.replace("^RT", "")
     column = column.str.replace(r"(?<=@)\w+", "")
     column = column.str.replace(r"[.,\/#@!¡\?¿$%\^&\*;:{}=\-_`~()”“\"]", " ")
