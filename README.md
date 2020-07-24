@@ -10,7 +10,7 @@ The end-product looks as follows:
 
 # How it Works
 
-The application provides you with (close to) real-time **tracking of the sentiment of comments and mentions towards a set of accounts**. For predicting the sentiment of comments it uses a combination of fixed rules and a classifier built with the language model [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>).
+The application provides you with (close to) real-time **tracking of the sentiment towards a set of accounts**. For predicting the sentiment of comments it uses a combination of fixed rules and a classifier built with the language model [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>).
 
 Just to make it clearer, the app doesn't track the sentiment of the comments made by the accounts you defined. **It tracks the sentiment of the responses and mentions received by those accounts.**
 
