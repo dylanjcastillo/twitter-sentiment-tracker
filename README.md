@@ -93,9 +93,13 @@ TOKENIZER = transformers.BertTokenizerFast.from_pretrained(
 
 Save the updated `emojis_dict.csv` in the `data/` directory.
 
+You can use the versions of the [vocabulary](https://drive.google.com/file/d/1soU3JKDnmAeJdBEP-JGqb1DCM-s0roqW/view?usp=sharing) and the [learned parameters](https://drive.google.com/file/d/1b9U903Sky6Rl81X0reIgnBrmJYeJQvDV/view?usp=sharing) I used. Save them as `vocab.txt` and `model.bin` in `sentiment_app/input`. Keep the `config.py` file as is.
+
 # How to Deploy
 
-First, make sure you've set everything from the [previous section](#how-to-add-accounts-to-track). In addition, there are a few things you need to have in place in your VPS:
+First, make sure you've set everything from the [previous section](#how-to-add-accounts-to-track).
+
+In addition, there are a few things you need to have in place in your VPS:
 
 - [Python 3.8](https://gist.github.com/plembo/6bc141a150cff0369574ce0b0a92f5e7#file-deadsnakes-python38-ubuntu-bionic-md)
 - [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) and [docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04)
@@ -144,7 +148,7 @@ After installing Python 3.8, Docker, and docker-compose, you can continue as fol
 
 7. Run `sh run-docker-sh` in the your root directory of your project
 
-8. That's all! You're LIVE now!
+8. That's all! It's ALIVE!
 
 # Limitations
 
