@@ -1,4 +1,4 @@
-# Real-time tracker of sentiment on Twitter
+# Track Sentiment on Twitter in Real-time
 
 ![Python](https://img.shields.io/badge/Python-v3.8.3-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
@@ -8,7 +8,7 @@ The end-product looks as follows:
 
 <img src="tweets_scorer.gif" alt="architecture" width="600">
 
-# How it works
+# How it Works
 
 The application provides you with (close to) real-time **tracking of the sentiment of comments and mentions towards a set of accounts**. For predicting the sentiment of comments it uses a combination of fixed rules and a classifier built with the language model [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>).
 
@@ -52,7 +52,7 @@ For `SENTIMENT_APP_HOST` use `sentiment_app` if you are testing or deployig the 
 
 `FETCH_INTERVAL` defines how frequently, in seconds, you make requests to the Twitter API to get the latest tweets. Make sure to read the [rate limits](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets) you should respect. The general recommendation is not to have many accounts and not updating that
 
-## Define accounts to track
+## Define Accounts to Track
 
 To define which accounts you want to track you need to update the `./data/accounts.csv` file. This will feed a query to the Twitter API that gets the mentions and responses that those accounts get. There's some _smart filters_ to avoid getting mentions or responses that are note relevant.
 
@@ -65,7 +65,7 @@ The `accounts.csv` file have the following fields:
 - **color:** Color associated with that account, it is shown at the top of the sumamry card
 - **party:** Political party associated to the account you want to track. Leave it empty if it isn't relevant.
 
-## Bring your own model
+## Bring Your Own Model
 
 You'll probably want to use a different model than the one I used. It shouldn't be that hard to add one. You need to provide the following things:
 
@@ -93,7 +93,7 @@ TOKENIZER = transformers.BertTokenizerFast.from_pretrained(
 
 Save the updated `emojis_dict.csv` in the `data/` directory.
 
-# How to deploy
+# How to Deploy
 
 First, make sure you've set everything from the [previous section](#how-to-add-accounts-to-track). In addition, there are a few things you need to have in place in your VPS:
 
