@@ -32,7 +32,7 @@ CONSUMER_KEY = os.getenv("TWITTER_KEY")
 CONSUMER_SECRET = os.getenv("TWITTER_SECRET")
 SENTIMENT_APP_HOST = os.getenv("SENTIMENT_APP_HOST")
 FETCH_INTERVAL = int(os.getenv("FETCH_INTERVAL"))
-LANGUAGE = os.getenv("LANGUAGE") 
+LANGUAGE = os.getenv("LANGUAGE")
 AUTH = tweepy.AppAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 
 
@@ -306,7 +306,7 @@ if __name__ == "__main__":
         level=logging.INFO,
         datefmt="%Y-%m-%d %H:%M:%S",
     )
-    time.sleep(5)
+    time.sleep(30)
     start_time = datetime.datetime.now()
     end_time = datetime.datetime.now() + datetime.timedelta(hours=12)
     while True:
