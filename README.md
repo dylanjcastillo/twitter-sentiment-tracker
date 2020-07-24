@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-v3.8.3-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
-This repository contains the source code and resources for building a web app that tracks the sentiment on twitter towards set of pre-specified accounts. Esssentially, it is a leaner version of [polituits.com](https://polituits.com).
+This repository contains the source code and resources for building a web app that tracks the sentiment on twitter towards a set of pre-specified accounts. Esssentially, it is a leaner version of [polituits.com](https://polituits.com).
 
 The end-product looks as follows:
 
