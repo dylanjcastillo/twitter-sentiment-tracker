@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  dash_app:
+    build: ./dash_app
+    restart: always
+    command: gunicorn --workers=2 --threads=4 --worker-class=gthread --bind 0.0.0.0:8050 app:server
+    volumes:
+      - ./dash_app:/usr/src/app/
+      - ./data:/usr/src/data/
+      - ./logs/dash_app:/usr/src/app/logs/
+    ports:
+      - "8050:8050"
+  fetcher:
+    build: ./fetcher
+    restart: always
+    command: python fetch_tweets.py
+    volumes:
+      - ./data:/usr/src/app/data/
+      - ./logs/fetcher:/usr/src/app/logs/
+    depends_on:
+      - sentiment_app
+  sentiment_app:
+    build: ./sentiment_app
+    restart: always
+    command: python app.py
+    volumes:
+      - ./data:/usr/src/app/data/
+      - ./logs/sentiment_app:/usr/src/app/logs/
+    expose:
+      - "5000"
+  nginx:
+    build: ./nginx
+    restart: always
+    volumes:
+      - ./logs/nginx:/var/log/nginx/
+    ports:
+      - "80:80"
+    depends_on:
+      - dash_app
+
