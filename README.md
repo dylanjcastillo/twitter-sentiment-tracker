@@ -39,7 +39,7 @@ Then, create an `.env` file in the `fetcher/` directory. It should contain these
 ```
 TWITTER_KEY=COPY_YOUR_API_KEY_HERE
 TWITTER_SECRET=COPY_YOUR_API_SECRET_KEY_HERE
-SENTIMENT_APP_HOST=localhost
+SENTIMENT_APP_HOST=sentiment_app
 FETCH_INTERVAL=30
 LANGUAGE=es
 ```
@@ -78,7 +78,7 @@ For training the model, I suggest the following [repository](https://github.com/
 
 Make sure to use the same pre-processing steps used in `process_text(column)` in `fetch_tweets.py` if you build a dataset for training your model. Adjust them if necessary.
 
-Save the `vocab.txt` and the model's learned parameters files in `sentiment_app/input/` directory. Then, update the `config.py` file in `sentment_app/`:
+Save the `vocab.txt` and the model's learned parameters files in the `sentiment_app/input/` directory. Then, update the `config.py` file in `sentment_app/`:
 
 ```
 MAX_LEN = 256
@@ -93,7 +93,7 @@ TOKENIZER = transformers.BertTokenizerFast.from_pretrained(
 
 Remember to replace the `emojis_dict.csv` in the `data/` directory by the version you are planning to use.
 
-You can use the versions of the [vocabulary](https://drive.google.com/file/d/1soU3JKDnmAeJdBEP-JGqb1DCM-s0roqW/view?usp=sharing) and the [learned parameters](https://drive.google.com/file/d/1b9U903Sky6Rl81X0reIgnBrmJYeJQvDV/view?usp=sharing) I used. Save them as `vocab.txt` and `model.bin` in `sentiment_app/input`. Keep the `config.py` file as is.
+You can use the versions of the [vocabulary](https://drive.google.com/file/d/1soU3JKDnmAeJdBEP-JGqb1DCM-s0roqW/view?usp=sharing) and the [learned parameters](https://drive.google.com/file/d/1b9U903Sky6Rl81X0reIgnBrmJYeJQvDV/view?usp=sharing) I used. Save them as `vocab.txt` and `model.bin` in `sentiment_app/input/`. Keep the `config.py` file as is.
 
 # How to Deploy
 
@@ -112,7 +112,7 @@ Log in to your VPS, and install Python 3.8, Docker, and docker-compose. Then, co
 
    ```shell
    $ cd utils
-   $ python3 create_database.py
+   $ python3.8 create_database.py
    ```
 
 3. Create an `.env` file with the [required variables](#set-environment-variables)
