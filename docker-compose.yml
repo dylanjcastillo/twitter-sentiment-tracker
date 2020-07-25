@@ -16,7 +16,7 @@ services:
     restart: always
     command: python fetch_tweets.py
     volumes:
-      - ./data:/usr/src/app/data/
+      - ./data:/usr/src/data/
       - ./logs/fetcher:/usr/src/app/logs/
     depends_on:
       - sentiment_app
@@ -25,7 +25,7 @@ services:
     restart: always
     command: python app.py
     volumes:
-      - ./data:/usr/src/app/data/
+      - ./data:/usr/src/data/
       - ./logs/sentiment_app:/usr/src/app/logs/
     expose:
       - "5000"

@@ -25,7 +25,7 @@ TWEETS_DB = DATA_DIR / "tweets.db"
 LOGS_PATH = Path(__file__).parent / "logs" / "fetcher.log"
 TARGETS_DF = pd.read_csv(DATA_DIR / "accounts.csv")
 EMOJI_TO_ORIG_LANG = (
-    pd.read_csv(DATA_DIR / "emojis_es.csv").set_index("name")["name_es"].to_dict()
+    pd.read_csv(DATA_DIR / "emojis_dict.csv").set_index("name")["name_es"].to_dict()
 )
 
 CONSUMER_KEY = os.getenv("TWITTER_KEY")
