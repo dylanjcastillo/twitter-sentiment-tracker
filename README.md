@@ -12,9 +12,9 @@ The end-product looks as follows:
 
 The application provides you with (close to) real-time **tracking of the sentiment on Twitter towards a set of accounts**. For predicting the sentiment of comments it uses a combination of fixed rules and a classifier built using the language model [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>).
 
-Just to make it clearer, the app doesn't track the sentiment of the comments made by the accounts you defined. **It tracks the sentiment of the responses and mentions received by those accounts.**
+To make it clearer, the app doesn't track the sentiment of the comments made by the accounts you defined. **It tracks the sentiment of the responses and mentions received by those accounts.**
 
-The architecture of the app looks as follows:
+Here's the architecture of the app:
 
 <img src="architecture.png" alt="architecture" width="600">
 
@@ -23,7 +23,7 @@ It comprises the following elements:
 - **NGINX** as a reverse proxy server
 - **Gunicorn** as a WSGI server
 - A **Dash** application for visualizing results
-- Processed tweets are store in an **SQlite3** database
+- An **SQlite3** database to store processed tweets 
 - Two additional **services** for getting, processing, and assigning sentiment to tweets
 
 # How to Add Accounts to Track
@@ -54,7 +54,7 @@ For `SENTIMENT_APP_HOST` use `sentiment_app` if you are testing or deployig the 
 
 ## Define Accounts to Track
 
-To define which accounts you want to track you need to update the `./data/accounts.csv` file. This will feed a query to the Twitter API that gets the mentions and responses that those accounts get. There's some _smart filters_ to avoid getting mentions or responses that are note relevant.
+To define which accounts you want to track you need to update the `data/accounts.csv` file. This will feed a query to the Twitter API that gets the mentions and responses that those accounts get. There's some _smart filters_ to avoid getting mentions or responses that are note relevant.
 
 The `accounts.csv` file has the following fields:
 
@@ -69,10 +69,10 @@ The `accounts.csv` file has the following fields:
 
 You'll probably want to use a different model than the one I used. It shouldn't be that hard to add one. You need to provide the following things:
 
-- A vocabulary file (vocab.txt) for the Tokenizer
+- A vocabulary file (`vocab.txt`) for the Tokenizer
 - A pre-trained BERT model from [HugginFace's repository of models](https://huggingface.co/models)
 - The model's learned parameters to load using `load_state_dict()`
-- An updated `emojis_dict.csv` file if you are planning on keeping that in the tweet processing pipeline
+- An updated `emojis_dict.csv` file in the `data/` directory, if you are planning on keeping that in the tweet processing pipeline
 
 For training the model, I suggest the following [repository](https://github.com/abhishekkrthakur/bert-sentiment) and [tutorial](https://www.youtube.com/watch?v=hinZO--TEk4) by Abhishek Thakur.
 
@@ -121,7 +121,7 @@ Log in to your VPS, and install Python 3.8, Docker, and docker-compose. Then, co
 
 5. Setup your [model](#bring-your-own-model)
 
-6. Add the server name to the NGINX config file
+6. Add the server name to the NGINX configuration file in `nginx/project.conf`
 
    ```conf
 
@@ -148,7 +148,7 @@ Log in to your VPS, and install Python 3.8, Docker, and docker-compose. Then, co
 
 7. Run `sh run-docker-sh` in the your root directory of your project
 
-8. (Optional) You can add a [cronjob](https://medium.com/@gavinwiener/how-to-schedule-a-python-script-cron-job-dea6cbf69f4e) that executes the `clean_database.py` in the `utils/` folder. This script removes old data from the database.
+8. (Optional) You can add a [cronjob](https://medium.com/@gavinwiener/how-to-schedule-a-python-script-cron-job-dea6cbf69f4e) that executes the `clean_database.py` in the `utils/` folder everyday. This script removes old data from the database.
 
 9) That's all! It's ALIVE!
 
