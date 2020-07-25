@@ -8,7 +8,7 @@ The end-product looks as follows:
 
 <img src="tweets_scorer.gif" alt="architecture" width="600">
 
-# How it Works
+# How It Works
 
 The application provides you with (close to) real-time **tracking of the sentiment towards a set of accounts**. For predicting the sentiment of comments it uses a combination of fixed rules and a classifier built with the language model [BERT](<https://en.wikipedia.org/wiki/BERT_(language_model)>).
 
@@ -26,11 +26,11 @@ It comprises the following elements:
 - Processed tweets are store in a **SQlite3** database
 - Two additional **services** for getting, processing, and assigning sentiment to tweets
 
-# How to add accounts to track
+# How to Add Accounts to Track
 
 If you want to build your own app to track sentiment toward a specific set of accounts, there are things three you'll need to do first: set the required environment variables, define which accounts you want to track, and provide the model's artifacts.
 
-## Set environment variables
+## Set Environment Variables
 
 Start by setting up a [Twitter Developer account](https://developer.twitter.com/en), create an App, and generate consumer keys for your App. In case you're wondering, this is entirely free. You just need to fill out some questions.
 
