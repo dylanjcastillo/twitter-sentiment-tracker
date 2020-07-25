@@ -23,7 +23,7 @@ It comprises the following elements:
 - **NGINX** as a reverse proxy server
 - **Gunicorn** as a WSGI server
 - A **Dash** application for visualizing results
-- An **SQlite3** database to store processed tweets 
+- An **SQlite3** database to store processed tweets
 - Two additional **services** for getting, processing, and assigning sentiment to tweets
 
 # How to Add Accounts to Track
@@ -76,7 +76,7 @@ You'll probably want to use a different model than the one I used. It shouldn't 
 
 For training the model, I suggest the following [repository](https://github.com/abhishekkrthakur/bert-sentiment) and [tutorial](https://www.youtube.com/watch?v=hinZO--TEk4) by Abhishek Thakur.
 
-Make sure to use the same pre-processing steps used in `process_text(column)` in `fetch_tweets.py` if you build a dataset for training your model. Adjust them if necessary.
+If you build a dataset for training your model, then use the same pre-processing steps as in the `process_text()` function in `fetch_tweets.py` . Adjust them if necessary.
 
 Save the `vocab.txt` and the model's learned parameters files in the `sentiment_app/input/` directory. Then, update the `config.py` file in `sentment_app/`:
 
