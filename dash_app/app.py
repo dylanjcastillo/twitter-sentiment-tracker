@@ -163,7 +163,7 @@ app.layout = html.Div(
 )
 def update_tweets(n, time_range, exclude_rt):
     conn = sqlite3.connect(DATABASE_PATH)
-    time_range = 15 if time_range not in (15, 60, 1440) else time_range * 100
+    time_range = 15 if time_range not in (15, 60, 1440) else time_range
     filter_rt = True if exclude_rt == [1] else False
     query = f"""
     select
@@ -209,7 +209,7 @@ def update_tweets(n, time_range, exclude_rt):
 )
 def update_cards(n, time_range, exclude_rt):
     conn = sqlite3.connect(DATABASE_PATH)
-    time_range = 15 if time_range not in (15, 60, 1440) else time_range * 100
+    time_range = 15 if time_range not in (15, 60, 1440) else time_range
     filter_rt = True if exclude_rt == [1] else False
     query = f"""
     select
