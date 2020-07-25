@@ -1,4 +1,4 @@
-# Track Sentiment on Twitter in Real-time
+# Twitter Sentiment Tracker
 
 ![Python](https://img.shields.io/badge/Python-v3.8.3-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
@@ -76,7 +76,7 @@ You'll probably want to use a different model than the one I used. It shouldn't 
 
 For training the model, I suggest the following [repository](https://github.com/abhishekkrthakur/bert-sentiment) and [tutorial](https://www.youtube.com/watch?v=hinZO--TEk4) by Abhishek Thakur.
 
-If you build a dataset for training your model, then use the same pre-processing steps as in the `process_text()` function in `fetch_tweets.py` . Adjust them if necessary.
+If you plan on building a dataset for training your model, then use the same pre-processing steps as in the `process_text()` function in `fetch_tweets.py` . Adjust them if necessary.
 
 Save the `vocab.txt` and the model's learned parameters files in the `sentiment_app/input/` directory. Then, update the `config.py` file in `sentment_app/`:
 
@@ -106,7 +106,7 @@ In addition, there are a few things you need to have in place in your VPS:
 
 Log in to your VPS, and install Python 3.8, Docker, and docker-compose. Then, continue as follows:
 
-1. Clone the repository: `git clone https://github.com/dylanjcastillo/real-time-tweets-classifier.git`
+1. Clone the repository: `git clone https://github.com/dylanjcastillo/twitter-sentiment-tracker.git`
 
 2. Open a terminal at the root directory of your project and create the Tweets database as follows:
 
