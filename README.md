@@ -1,6 +1,6 @@
 # Twitter Sentiment Tracker
 
-![Python](https://img.shields.io/badge/Python-v3.8.3-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
+![Python](https://img.shields.io/badge/Python-v3.8.3-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40_dylancastillo)](https://twitter.com/_cloudposse)
 
 This repository contains the source code and resources for building a web app that tracks the sentiment on twitter towards a set of pre-specified accounts. Essentially, it is a leaner version of [polituits.com](http://polituits.com).
 
